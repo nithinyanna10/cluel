@@ -1,0 +1,81 @@
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "LocalCopilot",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "window": {
+        "all": true
+      },
+      "globalShortcut": {
+        "all": true
+      },
+      "dialog": {
+        "all": true
+      },
+      "fs": {
+        "all": true,
+        "scope": ["$TEMP/**", "$APPDATA/**", "$DOCUMENT/**", "$DOWNLOAD/**"]
+      },
+      "http": {
+        "all": true,
+        "scope": ["http://127.0.0.1:8787/**", "http://localhost:8787/**"]
+      },
+      "notification": {
+        "all": true
+      },
+      "shell": {
+        "all": false,
+        "execute": false,
+        "open": false
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "com.localcopilot.app",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.png"
+      ]
+    },
+    "security": {
+      "csp": "default-src 'self'; connect-src http://127.0.0.1:8787 http://localhost:8787; img-src 'self' asset: https://asset.localhost; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "title": "LocalCopilot",
+        "label": "main",
+        "width": 580,
+        "height": 650,
+        "minWidth": 580,
+        "maxWidth": 580,
+        "minHeight": 400,
+        "resizable": false,
+        "fullscreen": false,
+        "transparent": true,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "skipTaskbar": false,
+        "visible": true,
+        "center": false,
+        "x": 820,
+        "y": 80
+      }
+    ]
+  }
+}
