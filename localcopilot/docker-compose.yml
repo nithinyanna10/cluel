@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8787:8787"
+    volumes:
+      - ./backend:/app
+      - localcopilot_data:/app/data
+    environment:
+      - LLM_PROVIDER=${LLM_PROVIDER:-mock}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - MODEL_NAME=${MODEL_NAME:-claude-sonnet-4-6}
+      - LLM_BASE_URL=${LLM_BASE_URL:-http://host.docker.internal:11434}
+      - TRANSCRIPTION_MODEL_SIZE=${TRANSCRIPTION_MODEL_SIZE:-base}
+      - PRIVACY_MODE=${PRIVACY_MODE:-false}
+      - LOCAL_ONLY_MODE=${LOCAL_ONLY_MODE:-true}
+      - DATABASE_URL=sqlite:////app/data/localcopilot.db
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8787/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  localcopilot_data:
