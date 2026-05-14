@@ -4,6 +4,9 @@
 
 /* ── Transparent window base ─────────────────────────────────────────────── */
 @layer base {
+  html {
+    color-scheme: dark;
+  }
   html, body, #root {
     background: transparent !important;
     overflow: hidden;
@@ -21,39 +24,58 @@
 /* ── Core glass tokens ───────────────────────────────────────────────────── */
 @layer components {
 
-  /* Main app window */
+  /* Main app window — keep fill fairly transparent so macOS vibrancy / Win blur reads as glass */
   .lc-window {
     width: 580px;
-    background: rgba(16, 16, 22, 0.72);
-    -webkit-backdrop-filter: blur(48px) saturate(200%);
-    backdrop-filter: blur(48px) saturate(200%);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 14px;
+    background:
+      linear-gradient(
+        165deg,
+        rgba(255, 255, 255, 0.10) 0%,
+        rgba(255, 255, 255, 0.02) 42%,
+        rgba(0, 0, 0, 0.08) 100%
+      ),
+      rgba(12, 12, 18, 0.38);
+    -webkit-backdrop-filter: blur(28px) saturate(185%);
+    backdrop-filter: blur(28px) saturate(185%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
     box-shadow:
-      0 0 0 0.5px rgba(255,255,255,0.05) inset,
-      0 32px 96px rgba(0,0,0,0.60),
-      0 8px 24px rgba(0,0,0,0.35);
+      0 1px 0 rgba(255, 255, 255, 0.12) inset,
+      0 0 0 0.5px rgba(0, 0, 0, 0.35) inset,
+      0 40px 100px rgba(0, 0, 0, 0.45),
+      0 12px 36px rgba(0, 0, 0, 0.28);
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    isolation: isolate;
   }
 
   /* Divider */
   .lc-divider {
     height: 1px;
-    background: rgba(255,255,255,0.07);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
     flex-shrink: 0;
+  }
+
+  /* Sub-panels (header strip, tabs) — stacked glass */
+  .lc-glass-strip {
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    background: rgba(8, 8, 12, 0.22);
   }
 
   /* Response card */
   .res-card {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
     padding: 14px 16px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
   }
 
   /* Icon badge next to section title */
@@ -151,8 +173,10 @@
   /* Glass input */
   .glass-input {
     width: 100%;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255, 255, 255, 0.07);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.14);
     border-radius: 10px;
     padding: 9px 12px;
     font-size: 13px;
@@ -162,6 +186,16 @@
   }
   .glass-input:focus { border-color: rgba(124,108,255,0.55); }
   .glass-input::placeholder { color: rgba(255,255,255,0.22); }
+
+  /* Bottom ask field — frosted chrome */
+  .lc-input-chrome {
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    backdrop-filter: blur(22px) saturate(170%);
+    background: rgba(8, 8, 12, 0.42);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+  }
 
   /* Primary button */
   .glass-btn-primary {
@@ -197,12 +231,21 @@
 
   /* Setup card */
   .setup-card {
-    background: rgba(16,16,22,0.78);
-    -webkit-backdrop-filter: blur(48px) saturate(200%);
-    backdrop-filter: blur(48px) saturate(200%);
-    border: 1px solid rgba(255,255,255,0.09);
-    border-radius: 14px;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.55);
+    background:
+      linear-gradient(
+        155deg,
+        rgba(255, 255, 255, 0.09) 0%,
+        rgba(255, 255, 255, 0.02) 45%,
+        rgba(0, 0, 0, 0.06) 100%
+      ),
+      rgba(14, 14, 20, 0.42);
+    -webkit-backdrop-filter: blur(28px) saturate(185%);
+    backdrop-filter: blur(28px) saturate(185%);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.1) inset,
+      0 28px 72px rgba(0, 0, 0, 0.42);
     padding: 24px;
     width: 340px;
   }
