@@ -190,7 +190,7 @@ export default function AssistantTab({ response, loading, error, sessionId, onAs
 
       {/* Query input — pinned at bottom of tab */}
       <div className="px-4 pb-3 flex-shrink-0" data-no-drag>
-        <div className="flex gap-2 items-center rounded-xl px-3 py-2.5" style={{ background: "rgba(255,255,255,.06)", border: "1px solid rgba(255,255,255,.09)" }}>
+        <div className="flex gap-2 items-center rounded-xl px-3 py-2.5 lc-input-chrome">
           <input
             className="flex-1 bg-transparent text-[13px] outline-none selectable"
             style={{ color: "rgba(255,255,255,.82)" }}
