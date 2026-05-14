@@ -35,11 +35,11 @@ export default function RecordingBar({
 
   return (
     <div
-      className="flex items-center gap-3 px-5"
+      className="lc-glass-strip flex items-center gap-3 px-5"
       style={{
         height: 40,
         flexShrink: 0,
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
       }}
       data-no-drag
     >
