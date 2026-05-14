@@ -5,7 +5,7 @@ interface Props {
 export default function TitleBar({ onClose }: Props) {
   return (
     <div
-      className="flex items-center gap-2 px-4"
+      className="lc-glass-strip flex items-center gap-2 px-4"
       style={{ height: 46, flexShrink: 0, cursor: "grab" }}
     >
       {/* App icon */}
