@@ -19,10 +19,10 @@ export default function FooterBar({ connection, sessionTitle }: Props) {
 
   return (
     <div
-      className="flex items-center px-4 flex-shrink-0"
+      className="lc-glass-strip flex items-center px-4 flex-shrink-0"
       style={{
         height: 36,
-        borderTop: "1px solid rgba(255,255,255,0.07)",
+        borderTop: "1px solid rgba(255,255,255,0.1)",
         flexShrink: 0,
       }}
       data-no-drag
