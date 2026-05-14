@@ -15,8 +15,8 @@ const TABS: { id: Tab; label: string }[] = [
 export default function TabBar({ active, onChange }: Props) {
   return (
     <div
-      className="flex items-end gap-5 px-5 flex-shrink-0"
-      style={{ height: 44, borderBottom: "1px solid rgba(255,255,255,0.07)" }}
+      className="lc-glass-strip flex items-end gap-5 px-5 flex-shrink-0"
+      style={{ height: 44, borderBottom: "1px solid rgba(255,255,255,0.08)" }}
       data-no-drag
     >
       {TABS.map((t) => (
